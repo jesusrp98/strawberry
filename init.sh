@@ -33,6 +33,13 @@ sudo pacman -S --noconfirm i3-gaps adapta-gtk-theme rofi ranger vim compton duns
 echo -e "\n=======INSTALL AUR PACKAGES=======\n"
 pacaur -S --noconfirm --noedit polybar spotify grub-customizer oh-my-zsh-git hsetroot dunstify
 
-# Install packages from AUR
+# Change shell
 echo -e "\n=======CHANGING DEFAULT SHELL=======\n"
 chsh -s /bin/zsh
+
+# Create links
+ln -s $HOME/dotfiles/.fonts $HOME/.fonts
+ln -s $HOME/dotfiles/vim/vimrc $HOME/.vimrc
+ln -s $HOME/dotfiles/zsh/.zshrc $HOME/.zshrc
+mkdir $HOME/.config/i3
+ln -s $HOME/dotfiles/i3/config $HOME/.config/i3/config
