@@ -39,9 +39,23 @@ echo -e "\n=======CHANGING DEFAULT SHELL=======\n"
 chsh -s /bin/zsh
 
 # Create links
+echo -e "\n=======CREATING SOFT LINKS=======\n"
 mkdir $HOME/.fonts
 cp $HOME/dotifles/fonts/* $HOME/.fonts
 ln -s $HOME/dotfiles/vim/vimrc $HOME/.vimrc
 ln -s $HOME/dotfiles/zsh/.zshrc $HOME/.zshrc
 rm $HOME/.config/i3/config
 ln -s $HOME/dotfiles/i3/config $HOME/.config/i3/config
+
+# Update Lightdm config file
+echo -e "\n=======CHANGING LIGHTDM CONFIG=======\n"
+sudo sed -i 's/^greeter-session=.*/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
+
+# Update Grub2 config file
+echo -e "\n=======CHANGING GRUB CONFIG=======\n"
+sudo sed -i '/^GRUB_THEME=.*/d' /etc/default/grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# Update sudo config file
+echo -e "\n=======CHANGING SUDSUDO CONFIG=======\n"
+echo "jesus ALL=(ALL) NOPASSWD:ALL" >> /etc/sudores
