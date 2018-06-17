@@ -39,7 +39,8 @@ echo -e "\n=======CHANGING DEFAULT SHELL=======\n"
 chsh -s /bin/zsh
 
 # Create links
-ln -s $HOME/dotfiles/.fonts $HOME/.fonts
+mkdir $HOME/.fonts
+cp $HOME/dotifles/fonts/* $HOME/.fonts
 ln -s $HOME/dotfiles/vim/vimrc $HOME/.vimrc
 ln -s $HOME/dotfiles/zsh/.zshrc $HOME/.zshrc
 rm $HOME/.config/i3/config
