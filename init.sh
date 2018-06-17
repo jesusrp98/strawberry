@@ -22,16 +22,17 @@ curl -u "$user" --data "{\"title\":\"test-key\",\"key\":\"`cat $HOME/.ssh/id_rsa
 
 # Clone dotfile repo from GitHub
 echo -e "\n=======CLOING DOTFILES REPO & MOVING DOTFILES=======\n"
-git clone git@github.com:jesusrp98/dotfiles.git $HOME
+mkdir $HOME/dotfiles
+git clone git@github.com:jesusrp98/dotfiles.git $HOME/dotfiles
 echo "\tFiles moved!"
 
 # Install packages from pacman
 echo -e "\n=======INSTALL REGULAR PACKAGES=======\n"
-sudo pacman -S --noconfirm i3-gaps adapta-gtk-theme rofi ranger vim compton dunst zsh corebird telegram-desktop lxappearance redshift polkit-gnome gnome-keyring lightdm-gtk-greeter i3lock blueman playerctl pacaur lightdm-gtk-greeter python-pip sublime-text-dev
+sudo pacman -S --noconfirm i3-gaps adapta-gtk-theme rofi ranger vim compton dunst zsh corebird telegram-desktop lxappearance redshift polkit-gnome gnome-keyring lightdm-gtk-greeter i3lock blueman playerctl pacaur lightdm-gtk-greeter python-pip
 
 # Install packages from AUR
 echo -e "\n=======INSTALL AUR PACKAGES=======\n"
-pacaur -S --noconfirm --noedit polybar spotify grub-customizer oh-my-zsh-git hsetroot dunstify
+pacaur -S --noconfirm --noedit polybar spotify grub-customizer oh-my-zsh-git hsetroot dunstify sublime-text-dev light
 
 # Change shell
 echo -e "\n=======CHANGING DEFAULT SHELL=======\n"
@@ -41,5 +42,5 @@ chsh -s /bin/zsh
 ln -s $HOME/dotfiles/.fonts $HOME/.fonts
 ln -s $HOME/dotfiles/vim/vimrc $HOME/.vimrc
 ln -s $HOME/dotfiles/zsh/.zshrc $HOME/.zshrc
-mkdir $HOME/.config/i3
+rm $HOME/.config/i3/config
 ln -s $HOME/dotfiles/i3/config $HOME/.config/i3/config
