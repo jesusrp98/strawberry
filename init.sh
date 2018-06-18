@@ -41,7 +41,7 @@ chsh -s /bin/zsh
 # Create links
 echo -e "\n=======CREATING SOFT LINKS=======\n"
 mkdir $HOME/.fonts
-cp $HOME/dotifles/fonts/* $HOME/.fonts
+cp $HOME/dotfiles/fonts/* $HOME/.fonts
 ln -s $HOME/dotfiles/vim/vimrc $HOME/.vimrc
 ln -s $HOME/dotfiles/zsh/.zshrc $HOME/.zshrc
 rm $HOME/.config/i3/config
@@ -58,4 +58,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Update sudo config file
 echo -e "\n=======CHANGING SUDSUDO CONFIG=======\n"
-echo "jesus ALL=(ALL) NOPASSWD:ALL" >> /etc/sudores
+# sudo echo "jesus ALL=(ALL) NOPASSWD:ALL" >> /etc/sudores
+
+# Config NZXT Kraken daemon
+sudo python3 -m pip install krakenx
