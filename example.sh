@@ -24,13 +24,13 @@ echo -e "\tSSH key added to GitHub!"
 
 # Clone dotfile repo from GitHub
 echo -e "\n=======CLOING DOTFILES REPO=======\n"
-mkdir $HOME/dotfiles
-git clone git@github.com:jesusrp98/dotfiles.git $HOME/dotfiles
+mkdir $HOME/.dotfiles
+git clone git@github.com:jesusrp98/dotfiles.git $HOME/.dotfiles
 echo -e "\tRepo cloned!"
 
 # Install packages from pacman
 echo -e "\n=======INSTALL REGULAR PACKAGES=======\n"
-sudo pacman -S --noconfirm i3-gaps adapta-gtk-theme rofi ranger vim compton dunst zsh corebird telegram-desktop lxappearance redshift polkit-gnome gnome-keyring lightdm-gtk-greeter i3lock blueman playerctl pacaur lightdm-gtk-greeter python-pip
+sudo pacman -S --noconfirm i3-gaps adapta-gtk-theme rofi ranger vim compton dunst zsh corebird telegram-desktop lxappearance redshift polkit-gnome gnome-keyring lightdm-gtk-greeter i3lock blueman playerctl pacaur lightdm-gtk-greeter python-pip vlc
 echo -e "\tPacman packages installed!"
 
 # Install packages from AUR
@@ -46,11 +46,11 @@ echo -e "\tShell changed!"
 # Create links
 echo -e "\n=======CREATING SOFT LINKS=======\n"
 mkdir $HOME/.fonts
-cp $HOME/dotfiles/fonts/* $HOME/.fonts
-ln -s $HOME/dotfiles/vim/vimrc $HOME/.vimrc
-ln -s $HOME/dotfiles/zsh/.zshrc $HOME/.zshrc
+cp $HOME/.dotfiles/fonts/* $HOME/.fonts
+ln -s $HOME/.dotfiles/vim/vimrc $HOME/.vimrc
+ln -s $HOME/.dotfiles/zsh/.zshrc $HOME/.zshrc
 rm $HOME/.config/i3/config
-ln -s $HOME/dotfiles/i3/config $HOME/.config/i3/config
+ln -s $HOME/.dotfiles/i3/config $HOME/.config/i3/config
 echo -e "\tLinks created!"
 
 # Update Lightdm config file
