@@ -30,7 +30,7 @@ echo -e "\tRepo cloned!"
 
 # Install packages from pacman
 echo -e "\n=======INSTALL REGULAR PACKAGES=======\n"
-sudo pacman -S --noconfirm i3-gaps adapta-gtk-theme rofi ranger vim compton dunst zsh corebird telegram-desktop lxappearance redshift polkit-gnome gnome-keyring lightdm-gtk-greeter i3lock blueman playerctl pacaur lightdm-gtk-greeter python-pip vlc
+sudo pacman -S --noconfirm i3-gaps adapta-gtk-theme rofi ranger vim compton dunst zsh corebird telegram-desktop lxappearance redshift polkit-gnome gnome-keyring lightdm-gtk-greeter i3lock blueman playerctl pacaur lightdm-gtk-greeter python-pip vlc termite
 echo -e "\tPacman packages installed!"
 
 # Install packages from AUR
@@ -46,9 +46,11 @@ echo -e "\tShell changed!"
 # Create links
 echo -e "\n=======CREATING SOFT LINKS=======\n"
 mkdir $HOME/.fonts
+mkdir $HOME/.config/termite
 cp $HOME/.dotfiles/fonts/* $HOME/.fonts
 ln -s $HOME/.dotfiles/vim/vimrc $HOME/.vimrc
 ln -s $HOME/.dotfiles/zsh/.zshrc $HOME/.zshrc
+ln -s $HOME/.dotfiles/termite/config $HOME/.config/termite/config
 rm $HOME/.config/i3/config
 ln -s $HOME/.dotfiles/i3/config $HOME/.config/i3/config
 echo -e "\tLinks created!"
