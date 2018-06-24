@@ -58,15 +58,18 @@ echo -e "\n=======CHANGING LIGHTDM CONFIG=======\n"
 sudo sed -i 's/^greeter-session=.*/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
 echo -e "\tLightdm config changed!"
 
-# Update Grub2 config file
-# echo -e "\n=======CHANGING GRUB CONFIG=======\n"
-# sudo sed -i '/^GRUB_THEME=.*/d' /etc/default/grub
-# sudo grub-mkconfig -o /boot/grub/grub.cfg
-# echo -e "\tGrub2 config changed!"
+# Update Grub2 config file if XPS
+if [ "$hostname" == "LINUX-XPS" ]; then
+    echo -e "\n=======CHANGING GRUB CONFIG=======\n"
+    sudo sed -i '/^GRUB_THEME=.*/d' /etc/default/grub
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+    echo -e "\tGrub2 config changed!"
+fi
 
 # Update sudo config file
-echo -e "\n=======CHANGING SUDSUDO CONFIG=======\n"
-# TODO todo
+echo -e "\n=======CHANGING SUDO CONFIG=======\n"
+sudo echo "jesus ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/10-installer
+echo -e "\tSudo config changed!"
 
 # Config NZXT Kraken daemon
 sudo python3 -m pip install krakenx
