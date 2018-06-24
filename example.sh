@@ -59,10 +59,10 @@ sudo sed -i 's/^greeter-session=.*/greeter-session=lightdm-gtk-greeter/' /etc/li
 echo -e "\tLightdm config changed!"
 
 # Update Grub2 config file
-echo -e "\n=======CHANGING GRUB CONFIG=======\n"
-sudo sed -i '/^GRUB_THEME=.*/d' /etc/default/grub
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-echo -e "\tGrub2 config changed!"
+# echo -e "\n=======CHANGING GRUB CONFIG=======\n"
+# sudo sed -i '/^GRUB_THEME=.*/d' /etc/default/grub
+# sudo grub-mkconfig -o /boot/grub/grub.cfg
+# echo -e "\tGrub2 config changed!"
 
 # Update sudo config file
 echo -e "\n=======CHANGING SUDSUDO CONFIG=======\n"
