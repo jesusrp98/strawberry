@@ -76,3 +76,6 @@ echo -e "\tSudo config changed!"
 # Config NZXT Kraken daemon
 sudo python3 -m pip install krakenx
 echo -e "\tKrakenx installed!"
+
+# Change default editor
+export EDITOR=vim
