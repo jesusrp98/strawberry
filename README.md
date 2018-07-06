@@ -34,16 +34,19 @@ $ git clone git@github.com:jesusrp98/strawberry.git
 
 ### Setup
 
-WIP
+In order to generate your final script, just fill the configuration files under the [conf](conf) folder, where all user provided information should be. Then, run the [setup.sh](setup.sh) script.
 
-## Modiphy your script
+## Edit your script
 
-WIP
+There is an example provided, called [example.sh](example.sh). Also, the generated script has lots of comments explaining what does what, so editing your script after its incepcion, with a little bit of Bash knowledge shouldn't be difficoult.
 
 ## Authors
 
+* **Ángel Heredia** - aka anthares101 - [GitHub](https://github.com/anthares101).
+* **Carlos Luque**
+* **Victoriano Pedrajas**
+* **Miguel Ángel Ramírez**
 * **Jesús Rodríguez** - aka Chechu - [GitHub](https://github.com/jesusrp98), [Twitter](https://twitter.com/jesusrp98).
-* ...
 
 ## License
 
