@@ -7,7 +7,8 @@
 
 if [ $# -eq 1 ] 
 then
-	confInfo=$(cat ../conf/repos.conf | grep -v '^#.*' | grep ^[^\ ] | grep -v "$(printf '\t')") #Reads information from /conf/repos.conf
+	#Clean the comments in the repos.conf file
+	confInfo=$(. ../clean-file.sh ../conf/repos.conf)
 	
 	#Divides the information with a path defined or not in confInfo
 	withArg=$(echo "$confInfo" | grep '^.*\ .*$') 
@@ -31,7 +32,6 @@ then
 		else
 			line="$line $x"
 			echo "git clone $line" >> $1
-			git clone $line
 		fi
 
 		let aux=$aux+1
@@ -40,7 +40,6 @@ then
 	for x in $noArg
 	do
 		echo "git clone $x /home/$USER/Documents/$(basename $x | sed -r -e 's/(.*)\.git/\1/')" >> $1
-		git clone $x /home/$USER/Documents/$(basename $x | sed -r -e 's/(.*)\.git/\1/')
 	done
 
 else
