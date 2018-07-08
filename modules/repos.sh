@@ -8,16 +8,11 @@
 if [ $# -eq 1 ] 
 then
 	#Clean the comments in the repos.conf file
-	confInfo=$(. ../clean-file.sh ../conf/repos.conf)
+	confInfo=$(./clean-file.sh ./conf/repos.conf)
 	
 	#Divides the information with a path defined or not in confInfo
 	withArg=$(echo "$confInfo" | grep '^.*\ .*$') 
 	noArg=$(echo "$confInfo" | grep -v '^.*\ .*$')
-
-	if [ -e $1 ] #If the file given already exist, it is deleted
-	then
-		rm $1
-	fi
 
 	aux=0 #Necesary to separate the de repository link from the path
 
