@@ -7,7 +7,7 @@
 # 	Upload it via 'curl' & using GitHub API
 
 #Clean the comments in the ssh.conf file
-confInfo=$(. ../clean-file.sh ../conf/ssh.conf)
+confInfo=$(. ./clean-file.sh ./conf/ssh.conf)
 
 #Clean the user: and email: syntax
 confInfo=$(echo "$confInfo" | sed -r -n -e 's/.*: (.*)/\1/p')
