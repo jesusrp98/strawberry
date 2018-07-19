@@ -25,8 +25,8 @@ do
 	else
 		email=$x
 		
-		ssh-keygen -qf "$HOME/.ssh/$user" -t rsa -C "$email" -N ''
-		curl -u "$user" --data "{\"title\":\"`hostname`\",\"key\":\"`cat $HOME/.ssh/$user.pub`\"}" https://api.github.com/user/keys
+		echo "ssh-keygen -qf "$HOME/.ssh/$user" -t rsa -C "$email" -N ''" >> $1
+		echo "curl -u "$user" --data "{\"title\":\"`hostname`\",\"key\":\"`cat $HOME/.ssh/$user.pub`\"}" https://api.github.com/user/keys" >> $1
 	fi
 
 	let aux=$aux+1
