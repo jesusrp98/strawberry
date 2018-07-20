@@ -2,6 +2,14 @@
 
 # ** SETUP FILE **
 #	This file generate the final script, based on all the modules available in Strawberry
+#   First it checks command arguments, and generates the script path file
+#   And then calls every module one by one, writting their output in the final script
+#   Check the color.conf file, for color information
+
+# Prints the main title
+printf "\033[1;91m"
+cat title.conf
+echo
 
 # ** ARGUMENT CHECKER **
 #   -h: User is asking for help
@@ -13,15 +21,22 @@
 while getopts "hf:" OPTION; do
     case $OPTION in
         h )
+            printf "\033[1;37m"
             cat help.conf
             exit 0
             ;;
         f )
             if [[ -e $OPTARG ]]; then
-                echo "File alredy exists: aborting"
+                printf "\033[1;91m" # Prints it in red
+                echo "The file alredy exists!"
+                echo "Please, input another file. Aborting..."
+                echo
+                printf "\033[1;37m"
+                cat help.conf
                 exit 1
             else
-                echo "File does not exists: continuing"
+                printf "\033[1;96m" # Prints it in cyan
+                echo "Path file does not exisits. Continuing..."
                 script=$OPTARG
             fi
             ;;
@@ -33,10 +48,13 @@ while getopts "hf:" OPTION; do
 done
 
 # If no argument was written, default file path is provided by the script
+# Default file name: d[YYYY]-[MM]-[DD]t[HH]-[mm]-[SS].sh
 if [ $OPTIND -eq 1 ]; then
-    script=$(date +"d%Ft%H-%M-%S-script").sh
-    echo "File path was not provided. Generating file in $script"
+    script=$(date +"d%Ft%H-%M-%S").sh
+    printf "\033[1;96m" # Prints it in cyan
+    echo "File path was not provided. Default name applied."
 fi
+echo "Generating file in '$script'..."
 
 shift $((OPTIND-1))
 
@@ -49,92 +67,34 @@ chmod u+x $script
 #   If it's empty, user have not provided any information related to that specific module,
 #   so this script does not call it. If the config file has some sort of info, then proceed to call it
 
+echo
+echo "Calling modules..."
+
+# Array that contains all module name
+# It is easier to call them with a for loop :)
+declare -a modules=(apt apt-repos aur edit git links pamac repos shell ssh)
+
+# Calls every module via a loop
+for module in "${modules[@]}"; do
 # APT repositories module
-./clean-file.sh conf/apt-repos.conf > /dev/null
-if [ $? -eq 1 ]; then
-    echo "APT repositories config file is empty"
-else
-    echo "Calling APT repositories module"
-    ./modules/apt-repos.sh $script
-fi
+    ./clean-file.sh conf/$module.conf > /dev/null
+    if [ $? -eq 1 ]; then
+        printf "\033[1;91m" # Prints it in red
+        echo " Config file from '$module' module is empty!"
+    else
+        printf "\033[1;92m" # Prints it in green
+        echo " Calling '$module' module..."
+        ./modules/$module.sh $script
+    fi
+done
 
-# APT package manager module
-./clean-file.sh conf/apt.conf > /dev/null
-if [ $? -eq 1 ]; then
-    echo "APT packages file is empty"
-else
-    echo "Calling APT package manager module"
-    ./modules/apt.sh $script
-fi
-
-# AUR package manager module
-./clean-file.sh conf/aur.conf > /dev/null
-if [ $? -eq 1 ]; then
-    echo "AUR package manager config file is empty"
-else
-    echo "Calling AUR package manager module"
-    ./modules/aur.sh $script
-fi
-
-# Edit files module
-./clean-file.sh conf/edit.conf > /dev/null
-if [ $? -eq 1 ]; then
-    echo "Edit files config file is empty"
-else
-    echo "Calling edit files module"
-    ./modules/edit.sh $script
-fi
-
-# Git account module
-./clean-file.sh conf/git.conf > /dev/null
-if [ $? -eq 1 ]; then
-    echo "Git account config file is empty"
-else
-    echo "Calling Git account module"
-    ./modules/git.sh $script
-fi
-
-# Links creation module
-./clean-file.sh conf/links.conf > /dev/null
-if [ $? -eq 1 ]; then
-    echo "Links creation config file is empty"
-else
-    echo "Calling links creation module"
-    ./modules/links.sh $script
-fi
-
-# Pacman package manager module
-./clean-file.sh conf/pacman.conf > /dev/null
-if [ $? -eq 1 ]; then
-    echo "Pacman package manager config file is empty"
-else
-    echo "Calling Pacman package manager module"
-    ./modules/pacman.sh $script
-fi
-
-# GitHub repositories cloning module
-./clean-file.sh conf/repos.conf > /dev/null
-if [ $? -eq 1 ]; then
-    echo "GitHub cloning config file is empty"
-else
-    echo "Calling GitHub cloning module"
-    ./modules/repos.sh $script
-fi
-
-# Default shell module
-./clean-file.sh conf/shell.conf > /dev/null
-if [ $? -eq 1 ]; then
-    echo "Default shell config file is empty"
-else
-    echo "Calling default shell module"
-    ./modules/shell.sh $script
-fi
-
-# SSH module
-./clean-file.sh conf/ssh.conf > /dev/null
-if [ $? -eq 1 ]; then
-    echo "SSH config file is empty"
-else
-    echo "Calling SSH module"
-    ./modules/ssh.sh $script
-fi
+# Prints final information
+echo
+printf "\033[1;96m"
+echo "File generated in: '$(realpath $script)'."
+echo "You can now edit the final script as you want."
+echo
+echo "Please, consider sharing the project with your UNIX-nerd friends"
+echo "This is a free project: edit it as you wish :)"
+echo "https://github.com/jesusrp98/strawberry"
+echo "Thanks for using Project: Strawberry!"
