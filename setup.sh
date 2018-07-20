@@ -53,7 +53,7 @@ if [ $OPTIND -eq 1 ]; then
     script=$(date +"d%Ft%H-%M-%S").sh
     printf "\033[1;96m" # Prints it in cyan
     echo "File path was not provided. Default name applied."
-fi
+fi 
 echo "Generating file in '$script'..."
 
 shift $((OPTIND-1))
