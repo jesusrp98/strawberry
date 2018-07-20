@@ -5,7 +5,7 @@ clear
 
 # Variables for Git user
 hostname=$(cat /etc/hostname)
-email=jesusrp98@outlook.com
+email=jesusrope98@outlook.com
 user=jesusrp98
 
 # Add Git info 
