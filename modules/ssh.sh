@@ -15,7 +15,7 @@ then
 	confInfo=$(echo "$confInfo" | sed -r -n -e 's/.*: (.*)/\1/p')
 
 	#Generate some comments
-	echo -e "\n#Ssh keys are generated and added to the github account specified in the ssh.conf file" >> $1
+	echo -e "\n# SSH keys are generated and added to the github account specified in the ssh.conf file" >> $1
 
 	aux=0 #Necesary to know what is an email and what is an user
 

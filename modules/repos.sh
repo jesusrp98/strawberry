@@ -11,7 +11,7 @@ then
 	confInfo=$(. ./clean-file.sh ./conf/repos.conf)
 
 	#Generate some comments
-	echo -e "\n#Git repositories specified in the repos.conf file are clonned in the path specified" >> $1
+	echo -e "\n# Git repositories specified in the repos.conf file are clonned in the path specified" >> $1
 	
 	#Divides the information with a path defined or not in confInfo
 	withArg=$(echo "$confInfo" | grep '^.*\ .*$') 
