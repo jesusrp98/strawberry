@@ -14,9 +14,12 @@ then
 	#Clean the user: and email: syntax
 	confInfo=$(echo "$confInfo" | sed -r -n -e 's/.*: (.*)/\1/p')
 
+	#Generate some comments
+	echo -e "\n#Ssh keys are generated and added to the github account specified in the ssh.conf file" >> $1
+
 	aux=0 #Necesary to know what is an email and what is an user
 
-	#Extract the user and email information from ssh.conf file, generate the ssh key and upload it to github
+	#Extract the user and email information from ssh.conf file, generate the code needed for creating the ssh keys and upload them to github
 	for x in $confInfo
 	do
 		let mod=$aux%2
@@ -28,7 +31,7 @@ then
 			email=$x
 			
 			echo "ssh-keygen -qf "$HOME/.ssh/$user" -t rsa -C "$email" -N ''" >> $1
-			echo "curl -u "$user" --data "{\"title\":\"\`hostname\`\",\"key\":\"\`cat $HOME/.ssh/$user.pub\`\"}" https://api.github.com/user/keys" >> $1
+			echo -e "curl -u "$user" --data "{\"title\":\"\`hostname\`\",\"key\":\"\`cat $HOME/.ssh/$user.pub\`\"}" https://api.github.com/user/keys\n" >> $1
 		fi
 
 		let aux=$aux+1
