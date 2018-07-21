@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Check if there is an argument and if exists must be a file
+#Check if there is an argument and if it exists must be a file
 if [ -z $1 ]; then
 	echo "Missed argument"
 	exit -1
