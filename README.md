@@ -43,7 +43,7 @@ There is an example provided, called [example.sh](example.sh). Also, the generat
 ## Authors
 
 * **Ángel Heredia** - aka anthares101 - [GitHub](https://github.com/anthares101).
-* **Carlos Luque**
+* **Carlos Luque** - [GitHub](https://github.com/i62lucoc).
 * **Victoriano Pedrajas**
 * **Miguel Ángel Ramírez**
 * **Jesús Rodríguez** - aka Chechu - [GitHub](https://github.com/jesusrp98), [Twitter](https://twitter.com/jesusrp98).
