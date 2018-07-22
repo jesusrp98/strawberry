@@ -7,13 +7,13 @@
 
 if [ $# -eq 1 ] 
 then
-	#Clean the comments in the repos.conf file
+    #Clean the comments in the repos.conf file
 	confInfo=$(. ./clean-file.sh ./conf/repos.conf)
 
-	#Generate some comments
+    #Generate some comments
 	echo -e "\n# Git repositories specified in the repos.conf file are clonned in the path specified" >> $1
 	
-	#Divides the information with a path defined or not in confInfo
+	# Divides the information with a path defined or not in confInfo
 	withArg=$(echo "$confInfo" | grep '^.*\ .*$') 
 	noArg=$(echo "$confInfo" | grep -v '^.*\ .*$')
 

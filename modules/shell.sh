@@ -5,12 +5,6 @@
 #   'cat /etc/shells' for available shells
 # 	Change shell via 'chsh' command
 
-#Comprueba argumentos
-if [ $# != 1 ];then
-	echo "ERROR: No has introducido el archivo resultado!"
-	exit 0
-fi
-
 #Asigno a una variable la(s) shells
 newShell=$(. ./clean-file.sh ./conf/shell.conf)
 
@@ -33,6 +27,8 @@ if [ "$found" != 1 ];then
 	echo "ERROR: No existe la shell especificada!"
 	exit 0
 fi
+
+echo -e "\n# Changing default shell" >> $1
 
 #Imprimo en el lugar especificado por paramtros el comando de chsh con el shell a usar
 echo "chsh -s "$newShell"" >> $1

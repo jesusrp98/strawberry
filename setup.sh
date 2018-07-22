@@ -54,13 +54,15 @@ if [ $OPTIND -eq 1 ]; then
     printf "\033[1;96m" # Prints it in cyan
     echo "File path was not provided. Default name applied."
 fi 
-echo "Generating file in '$script'..."
+echo "Generating file '$script'..."
 
 shift $((OPTIND-1))
 
 # Creates the file & changes its permissions
 touch $script
 chmod u+x $script
+echo "SCRIPT GENERATED VIA PROJECT: STRAWBERRY" > $script
+echo "VISIT THE PROJECT AT https://github.com/jesusrp98" >> $script
 
 # ** MODULE CALLING **
 #   In this section of the script, we are checking each config file
@@ -72,7 +74,7 @@ echo "Calling modules..."
 
 # Array that contains all module name
 # It is easier to call them with a for loop :)
-declare -a modules=(apt apt-repos aur edit git links pamac repos shell ssh)
+declare -a modules=(apt-repos apt pamac aur edit git links repos shell ssh)
 
 # Calls every module via a loop
 for module in "${modules[@]}"; do
