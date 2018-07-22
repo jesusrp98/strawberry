@@ -74,7 +74,7 @@ echo "Calling modules..."
 
 # Array that contains all module name
 # It is easier to call them with a for loop :)
-declare -a modules=(apt-repos apt pamac aur edit git links repos shell ssh)
+declare -a modules=(apt-repos apt pacman aur edit git links repos shell ssh)
 
 # Calls every module via a loop
 for module in "${modules[@]}"; do
