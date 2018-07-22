@@ -4,12 +4,10 @@
 #   Git info found in ./conf/git.conf
 #   Add info using 'git config'
 
-name=$(cat ../conf/git.conf | sed -rn -e 's/^name: (.+)$/\1/pg')
-echo $name
-git config --global user.name "$name"
+name=$(. ./clean-file.sh ./conf/git.conf | sed -rn -e 's/^name: (.+)$/\1/pg')
+echo "git config --global user.name "$name"" >> $1
 
-email=$(cat ../conf/git.conf | sed -rn -e 's/^email: (.+)$/\1/pg')
-echo $email
-git config --global user.email $email
+email=$(. ./clean-file.sh ./conf/git.conf | sed -rn -e 's/^email: (.+)$/\1/pg')
+echo "git config --global user.email $email" >> $1
 
-git config --global push.default simple
+echo "git config --global push.default simple" >> $1
