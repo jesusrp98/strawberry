@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# MADE BY CHECHU:wq
+
 # ** AUR PACKAGES **
 #	Installs AUR packages for Arch Linux
 #	Reads packages names from ./conf/aur.conf

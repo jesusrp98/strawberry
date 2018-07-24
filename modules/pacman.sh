@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# MADE BY CHCH
+
 # ** ARCH PACKAGES **
 #	Installs regular Arch packages (from pacman)
 #	Packages to install found in ./conf/pacman.conf

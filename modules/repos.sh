@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# MADE BY ANGEL HEREDIA
+
 # ** GITHUB REPO CLONING **
 #   Repos to clone in ./conf/repos.conf
 #   Check where to clone them

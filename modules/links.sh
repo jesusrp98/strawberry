@@ -11,7 +11,7 @@ then
 	confInfo=$(. ./clean-file.sh ./conf/links.conf)
 
     #Generate some comments
-	echo -e "\n# Creates soft or hard links to files in a path (This information is specified in the ./conf/links.conf file)" >> $1
+	echo -e "\n# Creates soft or hard links to files in a path" >> $1
 
 	#Soft and hard links are clasified
 	hardLinks=$(echo "$confInfo" | grep "^.* hard .*$")
@@ -22,16 +22,16 @@ then
 	#Generates the code for the creation of the hard links specified en the links.conf file
 	echo -e "# Hard links" >> $1
 
-	for x in $hardLinks
+	for hardLink in $hardLinks
 	do
 		if [ $aux -eq 0 ]
 		then
-			origen=$x
+			origen=$hardLink
 		fi 
 
 		if [ $aux -eq 2 ]
 		then
-			echo "ln $origen $x" >> $1
+			echo "ln $origen $hardLink" >> $1
 			aux=0
 		fi 
 
@@ -43,16 +43,16 @@ then
 	#Generates the code for the creation of the soft links specified en the links.conf file
 	echo -e "# Soft links" >> $1
 
-	for x in $softLinks
+	for softLink in $softLinks
 	do
 		if [ $aux -eq 0 ]
 		then
-			origen=$x
+			origen=$softLink
 		fi 
 
 		if [ $aux -eq 2 ]
 		then
-			echo "ln -s $origen $x" >> $1
+			echo "ln -s $origen $softLink" >> $1
 			aux=0
 		fi 
 

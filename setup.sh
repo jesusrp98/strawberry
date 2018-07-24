@@ -4,12 +4,13 @@
 #	This file generate the final script, based on all the modules available in Strawberry
 #   First it checks command arguments, and generates the script path file
 #   And then calls every module one by one, writting their output in the final script
+#   All modules are found in ./modules folder
+#   Config files are found in ./conf folder
 #   Check the color.conf file, for color information
 
 # Prints the main title
 printf "\033[1;91m"
 cat title.conf
-echo
 
 # ** ARGUMENT CHECKER **
 #   -h: User is asking for help
@@ -26,6 +27,7 @@ while getopts "hf:" OPTION; do
             exit 0
             ;;
         f )
+            # If the file aldery exists, abort
             if [[ -e $OPTARG ]]; then
                 printf "\033[1;91m" # Prints it in red
                 echo "The file alredy exists!"
@@ -61,24 +63,27 @@ shift $((OPTIND-1))
 # Creates the file & changes its permissions
 touch $script
 chmod u+x $script
-echo "SCRIPT GENERATED VIA PROJECT: STRAWBERRY" > $script
-echo "VISIT THE PROJECT AT https://github.com/jesusrp98" >> $script
+echo "# SCRIPT GENERATED WITH PROJECT: STRAWBERRY" > $script
+echo "# PROJECT: STRAWBERRY IS A FREE & OPEN PROJECT" >> $script
+echo "# VISIT THE PROJECT AT https://github.com/jesusrp98" >> $script
 
 # ** MODULE CALLING **
 #   In this section of the script, we are checking each config file
 #   If it's empty, user have not provided any information related to that specific module,
 #   so this script does not call it. If the config file has some sort of info, then proceed to call it
 
-echo
-echo "Calling modules..."
+echo -e "\nModule config file are found in ./conf folder."
+echo "Modules source code are found in ./modules folder."
+
+echo -e "\nCalling modules..."
 
 # Array that contains all module name
 # It is easier to call them with a for loop :)
-declare -a modules=(apt-repos apt pacman aur edit git links repos shell ssh)
+declare -a modules=(git ssh repos apt-repos apt pacman aur shell links edit enviroment)
 
 # Calls every module via a loop
 for module in "${modules[@]}"; do
-# APT repositories module
+    # Cleans config file and then check content
     ./clean-file.sh conf/$module.conf > /dev/null
     if [ $? -eq 1 ]; then
         printf "\033[1;91m" # Prints it in red
@@ -91,12 +96,10 @@ for module in "${modules[@]}"; do
 done
 
 # Prints final information
-echo
 printf "\033[1;96m"
-echo "File generated in: '$(realpath $script)'."
-echo "You can now edit the final script as you want."
-echo
-echo "Please, consider sharing the project with your UNIX-nerd friends"
-echo "This is a free project: edit it as you wish :)"
+echo -e "\nFile generated in: '$(realpath $script)'."
+echo -e "You can now edit the final script as you want.\n"
+echo "Please, consider sharing the project with your UNIX-nerd friends."
+echo "This is a free & open project: edit it as you wish :)"
 echo "https://github.com/jesusrp98/strawberry"
-echo "Thanks for using Project: Strawberry!"
+echo -e "Thanks for using Project: Strawberry!\n"

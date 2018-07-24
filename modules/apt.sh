@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# MADE BY MIGUEL ANGEL RAMIREZ
+
 # ** APT PACKAGE MANAGER **
 #	First, adds all repos specified by the user
 #	This is done calling ./modules/apt-repos

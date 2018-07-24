@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# MADE BY ANGEL HEREDIA
+
 # ** UPLOAD SSH KEY TO GITHUB **
 #   Info found in ./conf/ssh.conf
 #   Get ssh info & GitHub username
@@ -31,7 +33,7 @@ then
 			email=$x
 			
 			echo "ssh-keygen -qf "$HOME/.ssh/$user" -t rsa -C "$email" -N ''" >> $1
-			echo -e "curl -u "$user" --data "{\"title\":\"\`hostname\`\",\"key\":\"\`cat $HOME/.ssh/$user.pub\`\"}" https://api.github.com/user/keys\n" >> $1
+			echo "curl -u "$user" --data "{\"title\":\"\`hostname\`\",\"key\":\"\`cat $HOME/.ssh/$user.pub\`\"}" https://api.github.com/user/keys" >> $1
 		fi
 
 		let aux=$aux+1
