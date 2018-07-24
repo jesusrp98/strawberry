@@ -13,14 +13,14 @@ Strawberry is a tool to create a script that helps you setting up distros. Just 
 There are several modules built-in in the Strawberry framework:
 
 * **Git:** Enter your personal info, like name or email.
-* **GitHub repo cloning:** Clone where desire a GitHub repository.
+* **GitHub repositories cloning:** Clone where desire a GitHub repository.
 * **Generate SSH key & upload it:** Generates a RSA key & upload it to GitHub for authentification.
-* **Download packages:** Automatic download & install of packages from your desire package manager (apt, yum, pacman).
+* **Package managment:** Automatic download & install of packages from your desire package manager.
 * **Change your default shell:** Choose your preferred shell easily.
 * **Create links:** Create hard & soft link with the 'ln' command.
 * **Edit files:** Add, edit or remove lines from a specific file in your system.
-
-And so much more to come...
+* **Enviroment variables:** Add or edit enviroment variables from your system.
+* **Change default shell:** Change default system shell with the 'chsh' command.
  
 ## Setting up Strawberry
 
@@ -34,7 +34,11 @@ $ git clone git@github.com:jesusrp98/strawberry.git
 
 ### Setup
 
-In order to generate your final script, just fill the configuration files under the [conf](conf) folder, where all user provided information should be. Then, run the [setup.sh](setup.sh) script.
+In order to generate your final script, just fill the configuration files under the [conf](conf) folder, where all user provided information should be. Then, run the [setup.sh](setup.sh) script in the project folder.
+
+```
+./setup.sh
+```
 
 ## Edit your script
 
