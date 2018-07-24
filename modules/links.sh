@@ -32,13 +32,11 @@ then
 		if [ $aux -eq 2 ]
 		then
 			echo "ln $origen $x" >> $1
-			aux=0
+			aux=-1
 		fi 
 
 		let aux=$aux+1
 	done
-
-	aux=0 #Necesary to read the arguments given in the links.conf file
 
 	#Generates the code for the creation of the soft links specified en the links.conf file
 	echo -e "# Soft links" >> $1
@@ -53,7 +51,7 @@ then
 		if [ $aux -eq 2 ]
 		then
 			echo "ln -s $origen $x" >> $1
-			aux=0
+			aux=-1
 		fi 
 
 		let aux=$aux+1
