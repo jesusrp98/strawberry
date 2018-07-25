@@ -22,16 +22,16 @@ then
 	#Generates the code for the creation of the hard links specified en the links.conf file
 	echo -e "# Hard links" >> $1
 
-	for x in $hardLinks
+	for hardLink in $hardLinks
 	do
 		if [ $aux -eq 0 ]
 		then
-			origen=$x
+			origen=$hardLink
 		fi 
 
 		if [ $aux -eq 2 ]
 		then
-			echo "ln $origen $x" >> $1
+			echo "ln $origen $hardLink" >> $1
 			aux=-1
 		fi 
 
@@ -41,16 +41,16 @@ then
 	#Generates the code for the creation of the soft links specified en the links.conf file
 	echo -e "# Soft links" >> $1
 
-	for x in $softLinks
+	for softLink in $softLinks
 	do
 		if [ $aux -eq 0 ]
 		then
-			origen=$x
+			origen=$softLink
 		fi 
 
 		if [ $aux -eq 2 ]
 		then
-			echo "ln -s $origen $x" >> $1
+			echo "ln -s $origen $softLink" >> $1
 			aux=-1
 		fi 
 

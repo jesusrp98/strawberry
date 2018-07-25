@@ -63,7 +63,10 @@ shift $((OPTIND-1))
 # Creates the file & changes its permissions
 touch $script
 chmod u+x $script
-echo "# SCRIPT GENERATED WITH PROJECT: STRAWBERRY" > $script
+
+# Prints script head
+echo "#!/bin/bash" > $script
+echo -e "\n# SCRIPT GENERATED WITH PROJECT: STRAWBERRY" >> $script
 echo "# PROJECT: STRAWBERRY IS A FREE & OPEN PROJECT" >> $script
 echo "# VISIT THE PROJECT AT https://github.com/jesusrp98" >> $script
 
