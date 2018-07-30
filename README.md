@@ -44,6 +44,15 @@ In order to generate your final script, just fill the configuration files under 
 
 There is an example provided, called [example.sh](example.sh). Also, the generated script has lots of comments explaining what does what, so editing your script after its incepcion, with a little bit of Bash knowledge shouldn't be difficoult.
 
+## Module creation
+
+* Please read [this](module-creation.conf) first before creating your own modules.
+* Use the [clean-file.sh](clean-file.sh) script to clean '.conf' files. Collect its output with the 'cat' command.
+* You could output text in color. Use the [color.conf](color.conf) file for reference.
+* There is a [example](example.sh) final script provided with the project. Use it for reference.
+* Consider printing useful comments to the final script: comments helps.
+* Please, comment your module.
+
 ## Authors
 
 * **Ángel Heredia** - aka anthares101 - [GitHub](https://github.com/anthares101).
