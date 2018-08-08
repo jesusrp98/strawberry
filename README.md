@@ -65,7 +65,7 @@ There is an example provided, called [example.sh](example.sh). Also, the generat
 
 This project is licensed under the GNU GPL v3 License - see the [LICENSE.md](LICENSE.md) file for details.
 
-## Acknowledgments
+## Postdata
 
 * Arch is kinda tedious sometimes :/
 * Built just for fun :)
